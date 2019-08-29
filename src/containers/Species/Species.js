@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Tree from '../../components/Tree/Tree';
+import Modal from '../../components/UI/Modal/Modal';
+import TreeForm from '../TreeForm/TreeForm';
 
 class Species extends Component {
     state = {
@@ -41,6 +43,7 @@ class Species extends Component {
     render(){
         return (
             <div>
+                <Modal><TreeForm /></Modal>
                 <h1>Trees</h1>
                 {this.state.trees.map(tree=>{
                     return <Tree key={tree.id} name={tree.name} description={tree.description} pruning={tree.pruning} image={tree.image}/>
