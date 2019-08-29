@@ -5,6 +5,7 @@ import TreeForm from '../TreeForm/TreeForm';
 
 class Species extends Component {
     state = {
+        input: '',
         trees: [
             {id: 1,
             name: 'Japanese Red Maple',
@@ -40,11 +41,16 @@ class Species extends Component {
             }
         ]
     }
+
+    inputHandler = (childData) => {
+        this.setState({input: childData})
+    }
     render(){
         return (
             <div>
-                <Modal><TreeForm /></Modal>
+                <Modal><TreeForm parentCallback = {this.inputHandler}/></Modal>
                 <h1>Trees</h1>
+                <h2>{this.state.input}</h2>
                 {this.state.trees.map(tree=>{
                     return <Tree key={tree.id} name={tree.name} description={tree.description} pruning={tree.pruning} image={tree.image}/>
                 })}
