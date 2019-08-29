@@ -1,0 +1,6 @@
+.Image{
+    max-width: 400px;
+    float: right;
+    object-fit: contain;
+  
+}

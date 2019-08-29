@@ -1,0 +1,33 @@
+@font-face {
+    font-family:'Simonetta', cursive;
+    src: url('https://fonts.googleapis.com/css?family=Simonetta&display=swap')
+  }
+
+.Tree{
+    overflow: auto;
+    margin: 25px;
+    clear: both;
+
+}
+
+.Tree > div{
+    max-width: 700px;
+    margin: 7px 0px;
+    text-align: left;
+}
+.Tree > div > h3{
+    font-family: 'Simonetta', cursive;
+    text-align: left;
+    font-size: 35px;
+}
+
+.Prune{
+    max-width: 400px;
+    padding: 10px;
+    background-color: #fff0d9;
+    box-shadow: 1px 1px 3px 1px #b5ac9f;
+}
+
+.Prune > p, .Prune > h5{
+    font-style: italic;
+}
