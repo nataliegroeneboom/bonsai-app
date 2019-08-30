@@ -46,6 +46,7 @@ class Species extends Component {
         this.setState({input: childData})
     }
     render(){
+        console.log(this.state.trees[0].description)
         return (
             <div>
                 <Modal><TreeForm parentCallback = {this.inputHandler}/></Modal>
