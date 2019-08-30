@@ -4,7 +4,6 @@ import Input from '../../components/UI/Input/Input';
 
 class TreeForm extends Component {
     state = {
-        input: '',
         trees: 
             {
             name:{ 
@@ -49,7 +48,7 @@ class TreeForm extends Component {
         })
     }
     sendData = (event) => {
-        event.preventDefault();
+        
         const formData = {};
         for(let formElementIdentifier in this.state.trees){
             formData[formElementIdentifier] = this.state.trees[formElementIdentifier].value;
@@ -60,7 +59,21 @@ class TreeForm extends Component {
         })
         .catch(error => {
             
-        })
+        });
+        event.preventDefault();
+        let tree = {...this.state.trees};
+        let updatedForm = {};
+        for(let inputValue in this.state.trees){
+           updatedForm = {...tree[inputValue]};
+           updatedForm.value = '';
+           tree[inputValue] = updatedForm;
+        }
+        
+        this.setState({
+            trees: tree
+        });
+        this.props.parentCallback();
+        
     }
 
     render(){

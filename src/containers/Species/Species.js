@@ -3,6 +3,8 @@ import Tree from '../../components/Tree/Tree';
 import Modal from '../../components/UI/Modal/Modal';
 import TreeForm from '../TreeForm/TreeForm';
 
+import classes from './Species.module.css';
+
 class Species extends Component {
     state = {
         input: '',
@@ -39,23 +41,38 @@ class Species extends Component {
                 alt: 'image of a red japanese bonsai in autumn'
             }
             }
-        ]
+        ],
+        addContent: false
     }
 
     inputHandler = (childData) => {
         this.setState({input: childData})
     }
+    addContentHandler = () => {
+        let modalView = !this.state.addContent;
+        this.setState({
+            addContent: modalView
+        })
+    }
+
+    addContentCancelHandler = () => {
+        this.setState({
+            addContent: false
+        })
+    }
     render(){
         console.log(this.state.trees[0].description)
         return (
-            <div>
-                <Modal><TreeForm parentCallback = {this.inputHandler}/></Modal>
+            <div className={classes.Species}>
+                <Modal show={this.state.addContent} modalClosed={this.addContentCancelHandler}>
+                    <TreeForm parentCallback = {this.addContentHandler}/></Modal>
+                
                 <h1>Trees</h1>
                 <h2>{this.state.input}</h2>
                 {this.state.trees.map(tree=>{
                     return <Tree key={tree.id} name={tree.name} description={tree.description} pruning={tree.pruning} image={tree.image}/>
                 })}
-            
+                <button onClick={this.addContentHandler} className={classes.Button}>Add a Tree</button>
             </div>
         )
     }
