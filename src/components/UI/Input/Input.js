@@ -24,7 +24,6 @@ const input = (props) => {
     }
     return (
         <div>
-            <label>{props.label}</label>
             {inputElement}
         </div>
     );

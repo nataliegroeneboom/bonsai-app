@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from '../../axios-content';
 import Input from '../../components/UI/Input/Input';
+import Aux from '../../hoc/Aux';
+import classes from './TreeForm.module.css';
 
 class TreeForm extends Component {
     state = {
@@ -85,7 +87,9 @@ class TreeForm extends Component {
             })
         }
         return (
-            <form>
+            <Aux>
+            <h2 className={classes.Header}>Add Content</h2>
+            <form className={classes.Form}>
                   {formElementsArray.map(formElement => (
                       <Input 
                         key={formElement.id}
@@ -98,6 +102,7 @@ class TreeForm extends Component {
                   ))}        
                 <button onClick={this.sendData}>Submit</button>
             </form>
+            </Aux>
         )
     }
 }
